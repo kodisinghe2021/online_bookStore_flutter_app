@@ -1,5 +1,6 @@
 
-import 'package:book_store_app/screens/separate/background_outer.dart';
+
+import 'package:book_store_app/screens/separate_screen_widgets/background_outer.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
