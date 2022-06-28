@@ -1,6 +1,4 @@
-
-
-import 'package:book_store_app/screens/separate_screen_widgets/background_outer.dart';
+import 'package:book_store_app/widgets/separate_screen_widgets/login_background.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -9,11 +7,6 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return SafeArea(
-      child: Scaffold(
-        body: CustomBackGround(size: size),
-      ),
-    );
+    return SafeArea(child: Scaffold(body: LoginBackGround(size: size)));
   }
 }
-

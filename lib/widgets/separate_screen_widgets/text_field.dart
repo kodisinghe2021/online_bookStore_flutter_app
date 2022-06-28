@@ -1,3 +1,4 @@
+import 'package:book_store_app/constant.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -38,7 +39,7 @@ class CustomTextField extends StatelessWidget {
 
         // this is the border style of start
         enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.blue, width: 1.0),
+          borderSide: BorderSide(color: kBorderColor, width: 1.0),
           borderRadius: BorderRadius.all(
             Radius.circular(18),
           ),
@@ -47,7 +48,7 @@ class CustomTextField extends StatelessWidget {
         // this is the border style of after focus
         focusedBorder: const OutlineInputBorder(
           borderSide:
-              BorderSide(color: Color.fromARGB(255, 93, 232, 170), width: 1.0),
+              BorderSide(color: kFocusBorderColor, width: 1.0),
           borderRadius: BorderRadius.all(
             Radius.circular(10),
           ),

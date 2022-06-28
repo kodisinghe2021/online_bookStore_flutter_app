@@ -1,16 +1,17 @@
+import 'package:book_store_app/constant.dart';
 import 'package:book_store_app/screens/login_screen/login_screen.dart';
 import 'package:book_store_app/utils/util_functions.dart';
 import 'package:flutter/material.dart';
 
 // this widgte for Splash Screen
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required String title}) : super(key: key);
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key, required String title}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _SplashScreenState extends State<SplashScreen> {
 // this function will move, from this page to the home page after a given time.
   @override
   void initState() {
@@ -39,11 +40,11 @@ class _MyHomePageState extends State<MyHomePage> {
           children: const [
             Text(
               "BOOKLAND",
-              style: TextStyle(fontSize: 40, color: Colors.blueAccent),
+              style: TextStyle(fontSize: 40, color: kPrimeryColor),
             ),
             Text(
               "Online Book Store",
-              style: TextStyle(fontSize: 20, color: Colors.blueAccent),
+              style: TextStyle(fontSize: 20, color: kPrimeryColor),
             ),
           ],
         ),
