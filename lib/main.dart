@@ -1,7 +1,14 @@
 import 'package:book_store_app/constant.dart';
-import 'package:book_store_app/screens/splash_screen/splash_screen.dart';
+import 'package:book_store_app/models/book_model.dart';
+import 'package:book_store_app/testing/alignment_testing.dart';
+import 'package:book_store_app/views/login_screen/login_screen.dart';
+import 'package:book_store_app/views/products/single_book_full_details.dart';
+import 'package:book_store_app/views/products/product_overview.dart';
+import 'package:book_store_app/views/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'constant.dart';
+import 'package:provider/provider.dart';
+import 'package:book_store_app/provider/books_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,13 +19,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primaryColor: kPrimeryColor,
+    return ChangeNotifierProvider(
+      create: (context) => BooksProvider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primaryColor: kPrimeryColor,
+        ),
+        home: const SplashScreen(title: 'Online Books Store'),
+        routes: {
+          LoginScreen.pageKey: (context) => LoginScreen(),
+          ProductOverView.pageKey: (context) => ProductOverView(),
+        },
       ),
-      home: const SplashScreen(title: 'Online Books Store'),
     );
   }
 }

@@ -1,4 +1,5 @@
-import 'package:book_store_app/screens/login_screen/registration_screen.dart';
+import 'package:book_store_app/views/login_screen/registration_screen.dart';
+import 'package:book_store_app/views/products/product_overview.dart';
 import 'package:book_store_app/utils/util_functions.dart';
 import 'package:book_store_app/widgets/buttons/custom_elevated_button.dart';
 import 'package:book_store_app/widgets/separate_screen_widgets/background_border.dart';
@@ -89,7 +90,10 @@ class _LoginBackGroundState extends State<LoginBackGround> {
                     ),
                   ),
                   const SizedBox(height: 30),
-                  CustomElevatedButtonNew(() {}, text: 'LOGIN'),
+                  CustomElevatedButtonNew(() {
+                    Navigator.pushNamed(context, ProductOverView.pageKey);
+                    //  UtilFuntion.NavigateTo(context, ProductOverView());
+                  }, text: 'LOGIN'),
                   TextButton(
                       onPressed: () {
                         UtilFuntion.NavigateTo(context, RegistrationScreen());
