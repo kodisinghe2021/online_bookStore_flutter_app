@@ -1,9 +1,8 @@
 import 'package:book_store_app/constant.dart';
-import 'package:book_store_app/models/book_model.dart';
-import 'package:book_store_app/testing/alignment_testing.dart';
 import 'package:book_store_app/views/login_screen/login_screen.dart';
+import 'package:book_store_app/views/login_screen/registration_screen.dart';
+import 'package:book_store_app/views/products/product_favourite_page.dart';
 import 'package:book_store_app/views/products/single_book_full_details.dart';
-import 'package:book_store_app/views/products/product_overview.dart';
 import 'package:book_store_app/views/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'constant.dart';
@@ -30,7 +29,10 @@ class MyApp extends StatelessWidget {
         home: const SplashScreen(title: 'Online Books Store'),
         routes: {
           LoginScreen.pageKey: (context) => LoginScreen(),
-          ProductOverView.pageKey: (context) => ProductOverView(),
+          ProductFavouritePage.pageKey: (context) => ProductFavouritePage(),
+          RegistrationScreen.pageKey: (context) => const RegistrationScreen(),
+          SingleBookFullDetailsScreen.pageKey: (context) =>
+              const SingleBookFullDetailsScreen(),
         },
       ),
     );

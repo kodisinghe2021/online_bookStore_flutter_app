@@ -1,9 +1,11 @@
-class BookModel {
+import 'package:flutter/material.dart';
+
+class BookModel with ChangeNotifier {
   final int bookID;
   final String bookName;
   final String description;
   final String imageURL;
-  final double price;
+  final String price;
   bool isFavourite;
 
   BookModel({
@@ -14,4 +16,9 @@ class BookModel {
     required this.price,
     required this.isFavourite,
   });
+
+  void toggleFavouriteStates() {
+    isFavourite = !isFavourite;
+    notifyListeners();
+  }
 }

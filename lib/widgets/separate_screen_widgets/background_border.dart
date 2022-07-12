@@ -1,5 +1,4 @@
 import 'package:book_store_app/constant.dart';
-import 'package:book_store_app/widgets/separate_screen_widgets/registration_background.dart';
 import 'package:flutter/material.dart';
 
 class InsideBorder extends StatelessWidget {
