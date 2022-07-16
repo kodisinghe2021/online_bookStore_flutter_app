@@ -29,9 +29,11 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+
       obscureText: isSecure,
       controller: controller,
       decoration: InputDecoration(
+        iconColor: kPrimeryColor,
         errorText: errorText,
         label: Text(textOnLabale),
         prefixIcon: iconPrefix,
@@ -41,7 +43,7 @@ class CustomTextField extends StatelessWidget {
         enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: kBorderColor, width: 1.0),
           borderRadius: BorderRadius.all(
-            Radius.circular(18),
+            Radius.circular(28),
           ),
         ),
 

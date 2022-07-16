@@ -1,7 +1,5 @@
-
-import 'package:book_store_app/constant.dart';
 import 'package:book_store_app/provider/books_provider.dart';
-import 'package:book_store_app/widgets/book_grid_widgtes/book_grid_separate.dart';
+import 'package:book_store_app/widgets/book_grid_widgtes/single_product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -10,12 +8,13 @@ class ProductBestSelling extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     final screenSize = MediaQuery.of(context).size;
+    // final screenSize = MediaQuery.of(context).size;
     final booksData = Provider.of<BooksProvider>(context);
-    final books = booksData.getBooks;
+    final books = booksData.getBookList;
     return SafeArea(
       child: Scaffold(
         body: GridView.builder(
+          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.all(17),
           itemCount: books.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -24,49 +23,9 @@ class ProductBestSelling extends StatelessWidget {
             crossAxisSpacing: 20,
             mainAxisSpacing: 10,
           ),
-          itemBuilder: (context, index) => SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Stack(
-                  children: [
-                    Image.network(
-                      books[index].imageURL,
-                      fit: BoxFit.fill,
-                    ),
-                    const Align(
-                      alignment: Alignment.bottomLeft,
-                      child: RounderdIcon(
-                        iconS: Icon(Icons.shopping_cart, color: kPrimeryColor),
-                      ),
-                    ),
-                    const Align(
-                      alignment: Alignment.bottomRight,
-                      child: RounderdIcon(
-                        iconS:
-                            Icon(Icons.favorite_border, color: kPrimeryColor),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: const [
-                    Icon(Icons.star_border, color: kPrimeryColor),
-                    Icon(Icons.star_border, color: kPrimeryColor),
-                    Icon(Icons.star_border, color: kPrimeryColor),
-                    Icon(Icons.star_border, color: kPrimeryColor),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                BookFootterText(
-                  text: books[index].bookName,
-                ),
-                const SizedBox(height: 5),
-                BookFootterText(
-                  text: books[index].price,
-                ),
-              ],
-            ),
+          itemBuilder: (context, index) => ChangeNotifierProvider.value(
+            value: books[index],
+            child: ProductSingleItemModel(),
           ),
         ),
       ),

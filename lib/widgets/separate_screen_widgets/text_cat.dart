@@ -38,7 +38,7 @@ class CustomHeading01 extends StatelessWidget {
       style: GoogleFonts.titanOne(
         textStyle: const TextStyle(
             fontStyle: FontStyle.italic,
-            fontSize: 60,
+            fontSize: 40,
             fontWeight: FontWeight.w500,
             color: kPrimeryColor,
             letterSpacing: 3),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BookModel with ChangeNotifier {
-  final int bookID;
+  final String bookID;
   final String bookName;
   final String description;
   final String imageURL;
@@ -14,7 +14,7 @@ class BookModel with ChangeNotifier {
     required this.description,
     required this.imageURL,
     required this.price,
-    required this.isFavourite,
+    this.isFavourite = false,
   });
 
   void toggleFavouriteStates() {

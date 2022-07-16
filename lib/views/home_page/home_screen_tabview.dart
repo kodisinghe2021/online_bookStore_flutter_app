@@ -1,12 +1,14 @@
 import 'package:anim_search_bar/anim_search_bar.dart';
+import 'package:book_store_app/views/cart_screen/cart_screen.dart';
 import 'package:book_store_app/views/products/product_best_selling.dart';
-import 'package:book_store_app/views/products/product_favourite_page.dart';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
 
 class HomePageTabView extends StatelessWidget {
   HomePageTabView({Key? key}) : super(key: key);
   final TextEditingController _serchBarEditor = TextEditingController();
+  static const pageKey = '/home-page-tab-view';
+
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -24,21 +26,19 @@ class HomePageTabView extends StatelessWidget {
                         width: 400,
                         textController: _serchBarEditor,
                         onSuffixTap: () {}),
-                    SizedBox(
-                      width: 30,
-                    ),
+                    const SizedBox(width: 30),
                     Column(
                       children: [
                         IconButton(
-                          icon: Icon(Icons.card_travel),
-                          onPressed: () {},
+                          icon: Icon(Icons.shopping_cart),
+                          onPressed: () {
+                            Navigator.pushNamed(context, CartScreen.pageKey);
+                          },
                         ),
-                        const Text("My Collection"),
+                        const Text("My Cart"),
                       ],
                     ),
-                    SizedBox(
-                      width: 30,
-                    ),
+                    const SizedBox(width: 30),
                     Column(
                       children: [
                         IconButton(
@@ -60,26 +60,24 @@ class HomePageTabView extends StatelessWidget {
                 tabs: const [
                   Tab(
                     icon: Icon(Icons.favorite_border_rounded),
-                    text: "My Favourite",
-                  ),
-                  Tab(
-                    icon: Icon(Icons.bookmark_border),
                     text: "Best Selling",
                   ),
                   Tab(
-                    icon: const Icon(Icons.category_outlined),
+                    icon: Icon(Icons.bookmark_border),
+                    text: "My Favourite",
+                  ),
+                  Tab(
+                    icon: Icon(Icons.category_outlined),
                     text: "Catogories",
                   ),
                 ],
               ),
               Expanded(
                 child: TabBarView(
-                  children: <Widget>[
-                    ProductFavouritePage(),
-                   ProductBestSelling(),
-                    const Center(
-                      child: const Icon(Icons.directions_bike),
-                    ),
+                  children: [
+                    ProductBestSelling(),
+                    Container(),
+                    Container(),
                   ],
                 ),
               ),

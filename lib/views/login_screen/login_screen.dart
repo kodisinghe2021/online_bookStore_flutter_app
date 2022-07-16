@@ -29,98 +29,126 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return SafeArea(
-      child: Scaffold(
-        body: Stack(
-          children: [
-            // bottom wave vector
-            Align(
-              // bottom wave vector
-              alignment: Alignment.bottomCenter,
-              child: Image.asset('assets/images/4.png'),
-            ),
-
-            // middle border
-            OutSideBorder(size: size),
-            InsideBorder(size: size),
-
-            // Top wave vector
-            Align(
-              alignment: Alignment.topCenter,
-              child: Image.asset('assets/images/4Up.png'),
-            ),
-
-            //form
-            Center(
-              child: Container(
-                width: size.width * 0.8,
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const CustomHeading01(
-                        text: 'LOGIN',
-                      ),
-                      const SizedBox(height: 90),
-                      CustomTextField(
-                        textOnLabale: "Email",
-                        isSecure: false,
-                        controller: _emailTextLog,
-                        // errorText: _errorTextEmailLog,
-                        iconPrefix: const Icon(Icons.email),
-                      ),
-                      const SizedBox(height: 10),
-                      CustomTextField(
-                        textOnLabale: "Password",
-                        isSecure: _isSecureText,
-                        controller: _passwordTextLog,
-                        // errorText: _errorTextPasswordLog,
-                        iconPrefix: const Icon(Icons.security),
-                        iconSufix: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              _isSecureText = !_isSecureText;
-                            });
-                          },
-                          icon: Icon(_isSecureText
-                              ? Icons.remove_red_eye_outlined
-                              : Icons.remove_red_eye),
-                        ),
-                      ),
-                      const SizedBox(height: 30),
-                      CustomElevatedButtonNew(() {}, text: 'LOGIN'),
-                      TextButton(
+    String screenWidth = size.width.ceil().toString();
+    double sc = size.height * 0.75;
+    String screenHeigth = sc.ceil().toString();
+    // final String screenWidth = w.toString();
+    return Scaffold(
+      body: SingleChildScrollView(
+        physics: ScrollPhysics(),
+        child: Container(
+          width: size.width,
+          height: size.height,
+          child: Stack(
+            children: [
+              SizedBox(
+                width: size.width,
+                height: size.height,
+                child: Image.asset(
+                  'assets/images/pat02.png',
+                  fit: BoxFit.fill,
+                ),
+              ),
+      
+              Container(
+                padding: const EdgeInsets.only(left: 60),
+                width: size.width * 0.9,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomTextField(
+                      textOnLabale: "Email",
+                      isSecure: false,
+                      controller: _emailTextLog,
+                      // errorText: _errorTextEmailLog,
+                      iconPrefix: const Icon(Icons.email),
+                    ),
+                    const SizedBox(height: 10),
+                    CustomTextField(
+                      textOnLabale: "Password",
+                      isSecure: _isSecureText,
+                      controller: _passwordTextLog,
+                      // errorText: _errorTextPasswordLog,
+                      iconPrefix: const Icon(Icons.security),
+                      iconSufix: IconButton(
                         onPressed: () {
-                          Navigator.pushNamed(
-                              context, RegistrationScreen.pageKey);
+                          setState(() {
+                            _isSecureText = !_isSecureText;
+                          });
                         },
-                        child: const Text("Not Account? Register Here"),
+                        icon: Icon(_isSecureText
+                            ? Icons.remove_red_eye_outlined
+                            : Icons.remove_red_eye),
                       ),
-                      Container(
-                        color: kBorderColor.withOpacity(0.5),
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.pushNamed(
-                                context, ProductFavouritePage.pageKey);
-                          },
-                          child: const Text("Continue as a guest"),
-                        ),
-                      ),
-                      Container(
-                        color: kBorderColor.withOpacity(0.5),
-                        child: TextButton(
-                          onPressed: () {
-                            UtilFuntion.NavigateTo(context, HomePageTabView());
-                          },
-                          child: const Text("Continue as a guest"),
-                        ),
-                      ),
-                    ],
+                    ),
+                    const SizedBox(height: 30),
+                    CustomElevatedButtonNew(() {}, text: 'LOGIN'),
+                  ],
+                ),
+              ),
+      
+              //this is the logo of right upper cornor
+              Align(
+                alignment: Alignment.topRight,
+                child: Container(
+                    margin: EdgeInsets.fromLTRB(0, 20, 20, 0),
+                    width: size.width * 0.4,
+                    height: size.width * 0.4,
+                    child: Image.asset('assets/images/login.png')),
+              ),
+      
+              const Positioned(
+                top: 210,
+                left: 90,
+                child: CustomHeading01(
+                  text: 'LOGIN',
+                ),
+              ),
+               
+              Positioned(
+                top: 600,
+                right: 0,
+                child: Container(
+                  width: 100,
+                  height: 50,
+                  decoration: const BoxDecoration(
+                    color: kPrimeryColor,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      bottomLeft: Radius.circular(20),
+                    ),
+                  ),
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, RegistrationScreen.pageKey);
+                    },
+                    icon: Icon(Icons.person_add),
                   ),
                 ),
               ),
-            ),
-          ],
+              Positioned(
+                top: 655,
+                right: 0,
+                child: Container(
+                  width: 100,
+                  height: 50,
+                  decoration: const BoxDecoration(
+                    color: kPrimeryColor,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      bottomLeft: Radius.circular(20),
+                    ),
+                  ),
+                  child: IconButton(
+                    onPressed: () {
+                      UtilFuntion.NavigateTo(context, HomePageTabView());
+                    },
+                    icon: Icon(Icons.login),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
